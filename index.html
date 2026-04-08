@@ -4,16 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List Sederhana</title>
+  <title>To-Do List</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h2>To-Do List</h2>
+
+    <!-- Tanggal & Jam -->
+    <div class="info">
+      <p id="datetime"></p>
+    </div>
+
+    <!-- Input -->
     <div class="input-group">
       <input type="text" id="taskInput" placeholder="Tambah tugas...">
       <button onclick="addTask()">Tambah</button>
     </div>
+
+    <!-- List -->
     <ul id="taskList"></ul>
   </div>
 
