@@ -1,19 +1,12 @@
 body {
-}
-
-.input-group {
-  display: flex;
-  margin-top: 10px;
-}
-
-input {
+.input-group input {
   flex: 1;
   padding: 10px;
   border-radius: 10px 0 0 10px;
   border: 1px solid #ccc;
 }
 
-button {
+.input-group button {
   padding: 10px;
   border: none;
   background: #6c63ff;
