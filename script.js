@@ -1,48 +1,56 @@
-function saveProfile() {
-  const nama = document.getElementById('inputNama').value;
-  const kelas = document.getElementById('inputKelas').value;
-  const umur = document.getElementById('inputUmur').value;
-
-  document.getElementById('nama').textContent = 'Nama: ' + nama;
-  document.getElementById('kelas').textContent = 'Kelas: ' + kelas;
-  document.getElementById('umur').textContent = 'Umur: ' + umur;
-}
+let tasks = [];
+let currentFilter = 'all';
 
 function addTask() {
-  const input = document.getElementById('taskInput');
-  const taskText = input.value.trim();
+  const text = document.getElementById('taskInput').value;
+  const date = document.getElementById('dateInput').value;
+  const time = document.getElementById('timeInput').value;
+  const category = document.getElementById('categoryInput').value;
 
-  if (taskText === '') return;
+  if (!text) return;
 
-  const li = document.createElement('li');
-
-  const span = document.createElement('span');
-  span.textContent = taskText;
-
-  const badge = document.createElement('span');
-  badge.className = 'badge';
-
-  span.onclick = () => {
-    span.classList.toggle('done');
-    badge.textContent = span.classList.contains('done') ? '✔' : '';
-  };
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'x';
-  deleteBtn.onclick = () => li.remove();
-
-  li.appendChild(span);
-  li.appendChild(badge);
-  li.appendChild(deleteBtn);
-
-  document.getElementById('taskList').appendChild(li);
-  input.value = '';
+  tasks.push({ text, date, time, category, done: false });
+  renderTasks();
 }
 
-function updateDateTime() {
-  const now = new Date();
-  document.getElementById('datetime').textContent = now.toLocaleTimeString('id-ID');
+function renderTasks() {
+  const list = document.getElementById('taskList');
+  list.innerHTML = '';
+
+  tasks.forEach((task, index) => {
+    if (currentFilter === 'pending' && task.done) return;
+    if (currentFilter === 'done' && !task.done) return;
+
+    const li = document.createElement('li');
+
+    const title = document.createElement('div');
+    title.textContent = task.text + ' (Due: ' + task.date + ' ' + task.time + ')';
+    if (task.done) title.classList.add('done');
+
+    title.onclick = () => {
+      task.done = !task.done;
+      renderTasks();
+    };
+
+    const del = document.createElement('button');
+    del.textContent = 'X';
+    del.onclick = () => {
+      tasks.splice(index, 1);
+      renderTasks();
+    };
+
+    li.appendChild(title);
+    li.appendChild(del);
+    list.appendChild(li);
+  });
 }
 
-setInterval(updateDateTime, 1000);
-updateDateTime();
+function filterTasks(type) {
+  currentFilter = type;
+  renderTasks();
+}
+
+// Dark mode
+document.getElementById('darkToggle').addEventListener('change', function() {
+  document.body.classList.toggle('dark');
+});
