@@ -1,4 +1,3 @@
-// Tambah tugas
 function addTask() {
   const input = document.getElementById('taskInput');
   const taskText = input.value.trim();
@@ -10,24 +9,16 @@ function addTask() {
   const span = document.createElement('span');
   span.textContent = taskText;
 
-  // Klik = tandai selesai
-  span.onclick = () => {
-    span.classList.toggle('done');
-
-    if (span.classList.contains('done')) {
-      badge.textContent = '✔ Selesai';
-    } else {
-      badge.textContent = '';
-    }
-  };
-
-  // Badge selesai
   const badge = document.createElement('span');
   badge.className = 'badge';
 
-  // Tombol hapus
+  span.onclick = () => {
+    span.classList.toggle('done');
+    badge.textContent = span.classList.contains('done') ? '✔' : '';
+  };
+
   const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Hapus';
+  deleteBtn.textContent = 'x';
   deleteBtn.onclick = () => li.remove();
 
   li.appendChild(span);
@@ -38,11 +29,10 @@ function addTask() {
   input.value = '';
 }
 
-// Tanggal & Jam realtime
+// Jam realtime
 function updateDateTime() {
   const now = new Date();
-  const formatted = now.toLocaleString('id-ID');
-  document.getElementById('datetime').textContent = formatted;
+  document.getElementById('datetime').textContent = now.toLocaleTimeString('id-ID');
 }
 
 setInterval(updateDateTime, 1000);
