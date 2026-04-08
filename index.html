@@ -9,40 +9,32 @@
 </head>
 <body>
   <div class="app">
+    <h1>To-Do List</h1>
 
-    <!-- Card Profile -->
-    <div class="profile-card">
-      <img src="profile.jpg" alt="foto">
-      <div class="profile-info">
-        <h3 id="nama">Nama: -</h3>
-        <p id="kelas">Kelas: -</p>
-        <p id="umur">Umur: -</p>
-      </div>
+    <!-- Dark Mode -->
+    <label class="toggle">
+      <input type="checkbox" id="darkToggle">
+      <span>Dark Mode</span>
+    </label>
+
+    <!-- Input -->
+    <div class="form">
+      <input type="text" id="taskInput" placeholder="Take Medicine">
+      <input type="date" id="dateInput">
+      <input type="time" id="timeInput">
+      <input type="text" id="categoryInput" placeholder="Category (optional)">
+      <button onclick="addTask()">Add Task</button>
     </div>
 
-    <!-- Input Profil -->
-    <div class="profile-input">
-      <input type="text" id="inputNama" placeholder="Masukkan nama">
-      <input type="text" id="inputKelas" placeholder="Masukkan kelas">
-      <input type="number" id="inputUmur" placeholder="Masukkan umur">
-      <button onclick="saveProfile()">Simpan Profil</button>
-    </div>
-
-    <!-- Header -->
-    <div class="header">
-      <h2>To Do List</h2>
-      <span id="datetime"></span>
-    </div>
-
-    <!-- Input Task -->
-    <div class="input-group">
-      <input type="text" id="taskInput" placeholder="Tambah tugas...">
-      <button onclick="addTask()">+</button>
+    <!-- Filter -->
+    <div class="filters">
+      <button onclick="filterTasks('all')">All Tasks</button>
+      <button onclick="filterTasks('pending')">Pending Tasks</button>
+      <button onclick="filterTasks('done')">Completed Tasks</button>
     </div>
 
     <!-- List -->
     <ul id="taskList"></ul>
-
   </div>
 
   <script src="script.js"></script>
