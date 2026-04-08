@@ -1,63 +1,49 @@
-body {
-  height: 100vh;
+// Tambah tugas
+function addTask() {
+  const input = document.getElementById('taskInput');
+  const taskText = input.value.trim();
+
+  if (taskText === '') return;
+
+  const li = document.createElement('li');
+
+  const span = document.createElement('span');
+  span.textContent = taskText;
+
+  // Klik = tandai selesai
+  span.onclick = () => {
+    span.classList.toggle('done');
+
+    if (span.classList.contains('done')) {
+      badge.textContent = '✔ Selesai';
+    } else {
+      badge.textContent = '';
+    }
+  };
+
+  // Badge selesai
+  const badge = document.createElement('span');
+  badge.className = 'badge';
+
+  // Tombol hapus
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Hapus';
+  deleteBtn.onclick = () => li.remove();
+
+  li.appendChild(span);
+  li.appendChild(badge);
+  li.appendChild(deleteBtn);
+
+  document.getElementById('taskList').appendChild(li);
+  input.value = '';
 }
 
-.container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 320px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+// Tanggal & Jam realtime
+function updateDateTime() {
+  const now = new Date();
+  const formatted = now.toLocaleString('id-ID');
+  document.getElementById('datetime').textContent = formatted;
 }
 
-h2 {
-  text-align: center;
-}
-
-.info {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #555;
-}
-
-.input-group {
-  display: flex;
-  gap: 5px;
-}
-
-input {
-  flex: 1;
-  padding: 8px;
-}
-
-button {
-  padding: 8px;
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 8px;
-  margin-top: 5px;
-  background: #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
-}
-
-.done {
-  text-decoration: line-through;
-  color: gray;
-}
-
-.badge {
-  font-size: 10px;
-  margin-left: 5px;
-  color: green;
-}
+setInterval(updateDateTime, 1000);
+updateDateTime();
