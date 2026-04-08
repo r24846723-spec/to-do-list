@@ -13,10 +13,19 @@
     <!-- Card Profile -->
     <div class="profile-card">
       <img src="https://via.placeholder.com/80" alt="foto">
-      <div>
-        <h3>Nama Kamu</h3>
-        <p>ID: 123456</p>
+      <div class="profile-info">
+        <h3 id="nama">Nama: -</h3>
+        <p id="kelas">Kelas: -</p>
+        <p id="umur">Umur: -</p>
       </div>
+    </div>
+
+    <!-- Input Profil -->
+    <div class="profile-input">
+      <input type="text" id="inputNama" placeholder="Masukkan nama">
+      <input type="text" id="inputKelas" placeholder="Masukkan kelas">
+      <input type="number" id="inputUmur" placeholder="Masukkan umur">
+      <button onclick="saveProfile()">Simpan Profil</button>
     </div>
 
     <!-- Header -->
@@ -25,7 +34,7 @@
       <span id="datetime"></span>
     </div>
 
-    <!-- Input -->
+    <!-- Input Task -->
     <div class="input-group">
       <input type="text" id="taskInput" placeholder="Tambah tugas...">
       <button onclick="addTask()">+</button>
