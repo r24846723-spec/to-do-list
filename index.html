@@ -8,22 +8,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>To-Do List</h2>
+  <div class="app">
 
-    <!-- Tanggal & Jam -->
-    <div class="info">
-      <p id="datetime"></p>
+    <!-- Card Profile -->
+    <div class="profile-card">
+      <img src="https://via.placeholder.com/80" alt="foto">
+      <div>
+        <h3>Nama Kamu</h3>
+        <p>ID: 123456</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <h2>To Do List</h2>
+      <span id="datetime"></span>
     </div>
 
     <!-- Input -->
     <div class="input-group">
       <input type="text" id="taskInput" placeholder="Tambah tugas...">
-      <button onclick="addTask()">Tambah</button>
+      <button onclick="addTask()">+</button>
     </div>
 
     <!-- List -->
     <ul id="taskList"></ul>
+
   </div>
 
   <script src="script.js"></script>
