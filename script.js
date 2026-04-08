@@ -8,7 +8,6 @@ function saveProfile() {
   document.getElementById('umur').textContent = 'Umur: ' + umur;
 }
 
-// Tambah tugas
 function addTask() {
   const input = document.getElementById('taskInput');
   const taskText = input.value.trim();
@@ -40,7 +39,6 @@ function addTask() {
   input.value = '';
 }
 
-// Jam realtime
 function updateDateTime() {
   const now = new Date();
   document.getElementById('datetime').textContent = now.toLocaleTimeString('id-ID');
