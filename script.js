@@ -1,3 +1,14 @@
+function saveProfile() {
+  const nama = document.getElementById('inputNama').value;
+  const kelas = document.getElementById('inputKelas').value;
+  const umur = document.getElementById('inputUmur').value;
+
+  document.getElementById('nama').textContent = 'Nama: ' + nama;
+  document.getElementById('kelas').textContent = 'Kelas: ' + kelas;
+  document.getElementById('umur').textContent = 'Umur: ' + umur;
+}
+
+// Tambah tugas
 function addTask() {
   const input = document.getElementById('taskInput');
   const taskText = input.value.trim();
